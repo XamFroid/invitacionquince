@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Digital - Mariagracia Agurto Pacheco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@200;300;400;600&family=Great+Vibes&family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #1A4A5C;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(77, 208, 225, 0.4) 0%, #1A4A5C 60%),
+                        radial-gradient(ellipse at bottom, rgba(128, 222, 234, 0.3) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: radial-gradient(circle at 30% 30%, rgba(133, 193, 233, 0.3), rgba(93, 173, 226, 0.1));
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rise 15s infinite ease-in;
+            border: 1px solid rgba(93, 173, 226, 0.2);
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                bottom: 110%;
+                transform: translateX(100px) scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .light-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .light-particle {
+            position: absolute;
+            background: radial-gradient(circle, #5DADE2, transparent);
+            border-radius: 50%;
+            animation: floatLight 8s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes floatLight {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.8; }
+        }
+
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            opacity: 0.4;
+            animation: riseHeart 12s infinite ease-in;
+        }
+
+        @keyframes riseHeart {
+            0% {
+                bottom: -50px;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateX(50px) rotate(15deg);
+            }
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 24px;
+            background: #85C1E9;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .heart::before {
+            left: 15px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        /* Flores flotantes */
+        .flowers-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-flower {
+            position: absolute;
+            animation: floatFlower 15s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes floatFlower {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Mariposas flotantes */
+        .butterflies-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .butterfly {
+            position: absolute;
+            animation: flyButterfly 20s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes flyButterfly {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.7;
+            }
+            25% {
+                transform: translate(50vw, 50vh) rotate(45deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(20vw, 20vh) rotate(-30deg);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translate(70vw, 40vh) rotate(60deg);
+                opacity: 0.7;
+            }
+            95% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(40vw, -100px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        .butterfly-wing {
+            animation: flapWing 0.3s infinite alternate ease-in-out;
+        }
+
+        @keyframes flapWing {
+            from { transform: scaleX(1); }
+            to { transform: scaleX(0.85); }
+        }
+
+        /* Decoraciones de esquina con flores */
+        .corner-flowers {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .corner-flowers.top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .corner-flowers.top-right {
+            top: 10px;
+            right: 10px;
+            transform: scaleX(-1);
+        }
+
+        .corner-flowers.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            transform: scaleY(-1);
+        }
+
+        .corner-flowers.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            transform: scale(-1);
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 35px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6),
+                        0 0 0 1px rgba(93, 173, 226, 0.1),
+                        0 0 60px rgba(93, 173, 226, 0.15);
+            overflow: hidden;
+            animation: containerEntry 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes containerEntry {
+            from { 
+                opacity: 0; 
+                transform: translateY(60px) scale(0.9);
+                filter: blur(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .float-decoration {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .float-left {
+            left: -30px;
+            top: 30%;
+            animation: floatSide 6s infinite ease-in-out;
+        }
+
+        .float-right {
+            right: -30px;
+            top: 50%;
+            animation: floatSide 7s infinite ease-in-out;
+        }
+
+        @keyframes floatSide {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .decoration-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(133, 193, 233, 0.4), rgba(93, 173, 226, 0.1));
+            border: 2px solid rgba(93, 173, 226, 0.3);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #4DD0E1 20%, 
+                #80DEEA 50%, 
+                #4DD0E1 80%, 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1E5A6E 0%, #26697D 50%, #1A4A5C 100%);
+            padding: 70px 50px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 15px solid transparent;
+            border-image: repeating-linear-gradient(
+                45deg,
+                #4DD0E1,
+                #4DD0E1 10px,
+                #26C6DA 10px,
+                #26C6DA 20px,
+                #80DEEA 20px,
+                #80DEEA 30px
+            ) 15;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(77, 208, 225, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .wave-decoration {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100'%3E%3Cpath fill='%23f8f9fa' fill-opacity='0.3' d='M0,50 C150,80 350,0 600,50 C850,100 1050,20 1200,50 L1200,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(248, 249, 250, 0.1));
+        }
+
+        .stars-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .star.twinkle {
+            animation: twinkleEffect 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkleEffect {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .dress-container {
+            width: 140px;
+            height: 160px;
+            margin: 0 auto 35px;
+            position: relative;
+            z-index: 10;
+            filter: drop-shadow(0 15px 35px rgba(93, 173, 226, 0.4));
+            animation: dressFloat 4s infinite ease-in-out;
+        }
+
+        @keyframes dressFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        .dress-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(93, 173, 226, 0.3), transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .dress-svg {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .invitation-text {
+            color: rgba(255,255,255,0.75);
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 300;
+            position: relative;
+            z-index: 5;
+            animation: gentleFadeIn 2s ease-out infinite alternate;
+        }
+
+        @keyframes gentleFadeIn {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+
+        .celebration-title {
+            color: #80DEEA;
+            font-size: 72px;
+            font-family: 'Great Vibes', cursive;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 5;
+            text-shadow: 0 8px 25px rgba(77, 208, 225, 0.6);
+            line-height: 0.9;
+            letter-spacing: 2px;
+            animation: softGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes softGlow {
+            0%, 100% { 
+                text-shadow: 0 8px 25px rgba(77, 208, 225, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 8px 35px rgba(128, 222, 234, 0.8);
+                transform: scale(1.01);
+            }
+        }
+
+        .name-block {
+            position: relative;
+            z-index: 5;
+        }
+
+        .first-name {
+            color: white;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            line-height: 1.1;
+            animation: subtleShine 5s ease-in-out infinite;
+        }
+
+        @keyframes subtleShine {
+            0%, 100% { opacity: 0.95; }
+            50% { opacity: 1; }
+        }
+
+        .last-name {
+            color: #80DEEA;
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+            text-shadow: 0 3px 15px rgba(128, 222, 234, 0.7);
+            animation: gentleGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { 
+                text-shadow: 0 3px 15px rgba(128, 222, 234, 0.6);
+            }
+            50% { 
+                text-shadow: 0 3px 20px rgba(128, 222, 234, 0.9);
+            }
+        }
+
+        .main-content {
+            padding: 70px 50px;
+            position: relative;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-image: linear-gradient(
+                to bottom,
+                #4DD0E1,
+                #80DEEA,
+                #26C6DA,
+                #80DEEA,
+                #4DD0E1
+            ) 1;
+        }
+
+        .corner-accent {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+        }
+
+        .corner-accent.top-left {
+            top: 20px;
+            left: 20px;
+            background: radial-gradient(circle at 0 0, rgba(93, 173, 226, 0.15), transparent 70%);
+        }
+
+        .corner-accent.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            background: radial-gradient(circle at 100% 100%, rgba(93, 173, 226, 0.15), transparent 70%);
+        }
+
+        .date-display {
+            text-align: center;
+            margin-bottom: 55px;
+            position: relative;
+        }
+
+        .date-display::before,
+        .date-display::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(93, 173, 226, 0.1);
+            animation: rotate 20s linear infinite;
+        }
+
+        .date-display::before {
+            top: -20px;
+            left: -40px;
+        }
+
+        .date-display::after {
+            bottom: -20px;
+            right: -40px;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .weekday {
+            color: #80DEEA;
+            font-size: 42px;
+            font-family: 'Great Vibes', cursive;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(77, 208, 225, 0.4);
+            position: relative;
+            z-index: 2;
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .date-number {
+            color: #1E5A6E;
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            font-family: 'Cinzel', serif;
+            line-height: 1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            animation: pulseNumber 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseNumber {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .elegant-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px 0;
+            gap: 25px;
+            position: relative;
+        }
+
+        .divider-line {
+            width: 100px;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, #4DD0E1, transparent);
+            opacity: 0.5;
+        }
+
+        .divider-ornament {
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #4DD0E1, #26C6DA);
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px rgba(77, 208, 225, 0.6);
+            animation: ornamentPulse 2s infinite;
+        }
+
+        @keyframes ornamentPulse {
+            0%, 100% { transform: rotate(45deg) scale(1); }
+            50% { transform: rotate(45deg) scale(1.2); }
+        }
+
+        .event-details {
+            background: white;
+            padding: 45px 40px;
+            border-radius: 25px;
+            margin: 35px 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08),
+                        inset 0 1px 0 rgba(255,255,255,0.9),
+                        0 0 30px rgba(77, 208, 225, 0.15);
+            border: 1px solid rgba(77, 208, 225, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #4DD0E1, transparent);
+        }
+
+        .event-details::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent 40%, rgba(77, 208, 225, 0.04) 40%, rgba(77, 208, 225, 0.04) 42%, transparent 42%);
+            background-size: 30px 30px;
+            animation: movePattern 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes movePattern {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, 30px); }
+        }
+
+        .detail-row {
+            margin: 35px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .detail-label {
+            color: #4DD0E1;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+
+        .detail-emoji {
+            font-size: 20px;
+            display: inline-block;
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(2deg); }
+        }
+
+        .detail-label::before,
+        .detail-label::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: #4DD0E1;
+            opacity: 0.4;
+        }
+
+        .detail-content {
+            color: #1E5A6E;
+            font-size: 22px;
+            line-height: 1.7;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        .rsvp-area {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .rsvp-title {
+            color: #2E4053;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .mini-calendar {
+            width: 280px;
+            margin: 0 auto 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.25);
+            border: 2px solid rgba(77, 208, 225, 0.2);
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(77, 208, 225, 0.25);
+        }
+
+        .calendar-month {
+            color: #4DD0E1;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .calendar-year {
+            color: #1E5A6E;
+            font-size: 14px;
+            margin-top: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            color: #4DD0E1;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #1E5A6E;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day.empty {
+            color: transparent;
+        }
+
+        .calendar-day.event-day {
+            background: linear-gradient(135deg, #4DD0E1, #26C6DA);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(77, 208, 225, 0.5);
+            transform: scale(1.1);
+            animation: eventDayPulse 2s infinite;
+        }
+
+        @keyframes eventDayPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(77, 208, 225, 0.5); }
+            50% { box-shadow: 0 6px 20px rgba(77, 208, 225, 0.8); }
+        }
+
+        .calendar-day.other-day {
+            opacity: 0.4;
+        }
+
+        .countdown-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.12), rgba(128, 222, 234, 0.06));
+            border-radius: 20px;
+            border: 2px solid rgba(77, 208, 225, 0.25);
+        }
+
+        .countdown-title {
+            color: #4DD0E1;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1E5A6E;
+            font-family: 'Cinzel', serif;
+            line-height: 1;
+            text-shadow: 0 2px 10px rgba(77, 208, 225, 0.4);
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            color: #4DD0E1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .countdown-number {
+                font-size: 32px;
+            }
+            .countdown-item {
+                min-width: 60px;
+            }
+        }
+
+        .rsvp-deadline {
+            margin-bottom: 35px;
+            text-shadow: 0 2px 8px rgba(77, 208, 225, 0.3);
+        }
+
+        .footer-section {
+            background: linear-gradient(135deg, #1E5A6E 0%, #26697D 100%);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(77, 208, 225, 0.2), transparent 70%);
+        }
+
+        .footer-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: twinklePattern 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinklePattern {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .confirm-button {
+            background: linear-gradient(135deg, #4DD0E1 0%, #26C6DA 50%, #00ACC1 100%);
+            color: white;
+            border: none;
+            padding: 20px 55px;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 40px rgba(77, 208, 225, 0.5),
+                        inset 0 -2px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .confirm-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            transform: translate(-50%, -50%);
+            transition: width 0.7s, height 0.7s;
+        }
+
+        .confirm-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(77, 208, 225, 0.7),
+                        inset 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .confirm-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .confirm-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .decorative-element {
+            position: relative;
+            z-index: 2;
+            width: 100px;
+            height: 100px;
+            animation: floatDecor 4s infinite ease-in-out;
+        }
+
+        @keyframes floatDecor {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        @media (max-width: 768px) {
+            .footer-section {
+                flex-direction: column;
+                gap: 20px;
+                padding: 40px 20px;
+            }
+            .decorative-element {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container { 
+                width: 95%; 
+                border-radius: 30px; 
+                margin: 10px;
+            }
+            .header { padding: 55px 30px 65px; }
+            .main-content { padding: 55px 30px; }
+            .footer-section { padding: 40px 25px; }
+            .celebration-title { font-size: 52px; }
+            .first-name { 
+                font-size: 34px; 
+                letter-spacing: 2px;
+                word-break: break-word;
+                line-height: 1.1;
+            }
+            .last-name { 
+                font-size: 30px; 
+                letter-spacing: 3px;
+                word-break: break-word;
+            }
+            .date-number { 
+                font-size: 52px; 
+                letter-spacing: 4px;
+                word-break: break-word;
+            }
+            .weekday { font-size: 34px; }
+            .event-details { padding: 35px 25px; }
+            .detail-content { font-size: 18px; }
+            .yape-number { font-size: 20px !important; }
+            .confirm-button { padding: 18px 40px; font-size: 11px; }
+            .dress-container { width: 110px; height: 130px; }
+            .float-decoration { display: none; }
+            .date-display::before,
+            .date-display::after { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .header { padding: 50px 20px 60px; }
+            .main-content { padding: 50px 25px; }
+            .celebration-title { font-size: 46px; }
+            .first-name { 
+                font-size: 30px;
+                letter-spacing: 1px;
+            }
+            .last-name { 
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+            .date-number { 
+                font-size: 44px;
+                letter-spacing: 2px;
+            }
+            .weekday { font-size: 30px; }
+            .event-details { padding: 30px 20px; }
+            .detail-content { font-size: 17px; }
+            .yape-number { font-size: 18px !important; }
+            .confirm-button { padding: 16px 35px; font-size: 10px; }
+            .dress-container { width: 100px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles" id="bubblesContainer"></div>
+    <div class="light-particles" id="lightParticles"></div>
+    <div class="hearts-container" id="heartsContainer"></div>
+    <div class="flowers-container" id="flowersContainer"></div>
+    <div class="butterflies-container" id="butterfliesContainer"></div>
+
+    <div class="container">
+        <div class="float-decoration float-left">
+            <div class="decoration-circle"></div>
+        </div>
+        <div class="float-decoration float-right">
+            <div class="decoration-circle"></div>
+        </div>
+
+        <div class="header">
+            <div class="wave-decoration"></div>
+            <div class="stars-background" id="starsField"></div>
+            
+            
+            <div class="dress-container">
+                <svg class="dress-svg" viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="dressMainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#E0F7FA;stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:#B2EBF2;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#80DEEA;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4DD0E1;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="dressShine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.7" />
+                            <stop offset="50%" style="stop-color:#B2EBF2;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0.7" />
+                        </linearGradient>
+                        <linearGradient id="bodiceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#F1F8FB;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#B2EBF2;stop-opacity:1" />
+                        </linearGradient>
+                        <radialGradient id="gemGlow" cx="50%" cy="50%">
+                            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#4DD0E1;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#26C6DA;stop-opacity:0.4" />
+                        </radialGradient>
+                        <filter id="dressGlow">
+                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <filter id="sparkle">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Corpiño/Busto -->
+                    <g filter="url(#dressGlow)">
+                        <!-- Base del corpiño -->
+                        <path d="M 54 28 Q 54 22 58 20 Q 60 18 63 18 Q 66 18 68 20 Q 72 22 72 28 L 72 48 Q 70 50 63 50 Q 56 50 54 48 Z" 
+                              fill="url(#bodiceGrad)" 
+                              stroke="#80DEEA" 
+                              stroke-width="1"/>
+                        
+                        <!-- Tirantes con brillo -->
+                        <ellipse cx="58" cy="25" rx="4.5" ry="7" fill="url(#bodiceGrad)" stroke="#B2EBF2" stroke-width="0.8"/>
+                        <ellipse cx="68" cy="25" rx="4.5" ry="7" fill="url(#bodiceGrad)" stroke="#B2EBF2" stroke-width="0.8"/>
+                        
+                        <!-- Brillo en el corpiño -->
+                        <path d="M 58 26 Q 60 24 63 26 Q 66 24 68 26 L 68 46 Q 66 48 63 48 Q 60 48 58 46 Z" 
+                              fill="url(#dressShine)" 
+                              opacity="0.5"/>
+                        
+                        <!-- Detalles de gemas en el corpiño -->
+                        <circle cx="63" cy="32" r="2.5" fill="url(#gemGlow)" filter="url(#sparkle)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="58" cy="38" r="1.8" fill="url(#gemGlow)" filter="url(#sparkle)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="68" cy="38" r="1.8" fill="url(#gemGlow)" filter="url(#sparkle)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="63" cy="44" r="1.5" fill="url(#gemGlow)" filter="url(#sparkle)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Cintura definida -->
+                        <ellipse cx="63" cy="50" rx="12" ry="3.5" fill="#80DEEA" opacity="0.8"/>
+                    </g>
+                    
+                    <!-- Falda principal -->
+                    <g filter="url(#dressGlow)">
+                        <!-- Capa base de la falda -->
+                        <path d="M 51 50 
+                                 C 48 62, 43 82, 38 102
+                                 C 35 117, 32 137, 28 157
+                                 C 28 160, 30 162, 33 162
+                                 L 93 162
+                                 C 96 162, 98 160, 98 157
+                                 C 94 137, 91 117, 88 102
+                                 C 83 82, 78 62, 75 50
+                                 Z" 
+                              fill="url(#dressMainGradient)"
+                              stroke="#4DD0E1"
+                              stroke-width="1.5"/>
+                        
+                        <!-- Borde inferior con detalles -->
+                        <path d="M 33 162 
+                                 Q 38 158, 43 160 
+                                 Q 48 162, 53 160
+                                 Q 58 158, 63 160
+                                 Q 68 162, 73 160
+                                 Q 78 158, 83 160
+                                 Q 88 162, 93 160" 
+                              fill="none"
+                              stroke="#26C6DA"
+                              stroke-width="2"
+                              opacity="0.8"/>
+                        
+                        <!-- Capa de brillo izquierda -->
+                        <path d="M 51 50 
+                                 C 48 65, 44 88, 40 115
+                                 C 37 135, 34 150, 32 160
+                                 L 50 160
+                                 C 52 145, 55 125, 58 105
+                                 C 61 85, 64 65, 66 50
+                                 Z" 
+                              fill="url(#dressShine)" 
+                              opacity="0.4"/>
+                        
+                        <!-- Capa de brillo derecha -->
+                        <path d="M 75 50 
+                                 C 78 65, 82 88, 86 115
+                                 C 89 135, 92 150, 94 160
+                                 L 76 160
+                                 C 74 145, 71 125, 68 105
+                                 C 65 85, 62 65, 60 50
+                                 Z" 
+                              fill="url(#dressShine)" 
+                              opacity="0.4"/>
+                        
+                        <!-- Pliegues de la falda -->
+                        <path d="M 45 60 Q 43 90 41 130" 
+                              stroke="#FFFFFF" 
+                              stroke-width="1" 
+                              fill="none" 
+                              opacity="0.3"/>
+                        <path d="M 55 58 Q 54 95 52 135" 
+                              stroke="#FFFFFF" 
+                              stroke-width="0.8" 
+                              fill="none" 
+                              opacity="0.3"/>
+                        <path d="M 63 56 Q 63 100 63 140" 
+                              stroke="#FFFFFF" 
+                              stroke-width="1" 
+                              fill="none" 
+                              opacity="0.4"/>
+                        <path d="M 71 58 Q 72 95 74 135" 
+                              stroke="#FFFFFF" 
+                              stroke-width="0.8" 
+                              fill="none" 
+                              opacity="0.3"/>
+                        <path d="M 81 60 Q 83 90 85 130" 
+                              stroke="#FFFFFF" 
+                              stroke-width="1" 
+                              fill="none" 
+                              opacity="0.3"/>
+                    </g>
+                    
+                    <!-- Decoraciones de gemas y brillos en la falda -->
+                    <g opacity="0.8" filter="url(#sparkle)">
+                        <!-- Fila superior de gemas -->
+                        <circle cx="45" cy="70" r="2.2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="55" cy="68" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="63" cy="66" r="3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="71" cy="68" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="81" cy="70" r="2.2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Fila media -->
+                        <circle cx="40" cy="95" r="2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="50" cy="100" r="2.3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="63" cy="98" r="2.8" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="76" cy="100" r="2.3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="86" cy="95" r="2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.5;1;0.5" dur="2.7s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Fila inferior -->
+                        <circle cx="37" cy="130" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="48" cy="135" r="2.2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="63" cy="138" r="3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="1.9s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="78" cy="135" r="2.2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="89" cy="130" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.6s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Gemas en el borde -->
+                        <circle cx="35" cy="156" r="2.8" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="45" cy="158" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="55" cy="159" r="2.3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="63" cy="160" r="3.2" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="71" cy="159" r="2.3" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="81" cy="158" r="2.5" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="91" cy="156" r="2.8" fill="url(#gemGlow)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.1s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                    
+                    <!-- Pequeños brillos flotantes -->
+                    <g opacity="0.6">
+                        <circle cx="42" cy="85" r="1" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="58" cy="88" r="1.2" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="68" cy="85" r="1" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="84" cy="88" r="1.2" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="46" cy="115" r="1" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="80" cy="115" r="1" fill="#FFFFFF">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="invitation-text">Estás cordialmente invitado a celebrar</div>
+            <div class="celebration-title">Mis Quince Años</div>
+            <div class="name-block">
+                <div class="first-name">MARIAGRACIA</div>
+                <div class="last-name">AGURTO PACHECO</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="corner-accent top-left"></div>
+            <div class="corner-accent bottom-right"></div>
+
+            <div class="date-display">
+                <div class="weekday">Sábado</div>
+                <div class="date-number">29.11.2025</div>
+            </div>
+            
+            <div class="elegant-divider">
+                <div class="divider-line"></div>
+                <div class="divider-ornament"></div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="event-details">
+                <div class="detail-row">
+                    <div class="detail-label">
+                        <span class="detail-emoji">🕔</span>
+                        Hora
+                    </div>
+                    <div class="detail-content">5:00 de la tarde</div>
+                </div>
+                
+                <div class="elegant-divider" style="margin: 35px 0;">
+                    <div class="divider-line" style="width: 60px;"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">
+                        <span class="detail-emoji">📍</span>
+                        Lugar
+                    </div>
+                    <div class="detail-content">
+                        Local de la Hermandad<br>
+                        Huarmaca
+                    </div>
+                </div>
+                
+                <div class="elegant-divider" style="margin: 35px 0;">
+                    <div class="divider-line" style="width: 60px;"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">
+                        <span class="detail-emoji">👗</span>
+                        Vestimenta
+                    </div>
+                    <div class="detail-content">Sport Elegante</div>
+                </div>
+                
+                <div class="elegant-divider" style="margin: 35px 0;">
+                    <div class="divider-line" style="width: 60px;"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">
+                        <span class="detail-emoji">💝</span>
+                        Aportes
+                    </div>
+                    <div class="detail-content" style="font-size: 19px; line-height: 1.8;">
+                        Tu presencia es mi mejor regalo<br>
+                        Pero si un obsequio me quieres dar<br>
+                        En efectivo lo sabré apreciar o<br>
+                        A este número puedes yapear<br>
+                        <span class="yape-number" style="color: #4DD0E1; font-weight: 600; font-size: 20px; margin-top: 8px; display: inline-block; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">952 813 573</span><br>
+                        <span style="font-size: 17px; color: #4DD0E1; font-style: italic;">(Aida C. Pacheco P.)</span><br>
+                        <span style="font-size: 18px; margin-top: 8px; display: inline-block;">Gracias por acompañarnos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rsvp-area">
+                <div class="mini-calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-month">Noviembre</div>
+                        <div class="calendar-year">2025</div>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">D</div>
+                        <div class="calendar-day-header">L</div>
+                        <div class="calendar-day-header">M</div>
+                        <div class="calendar-day-header">M</div>
+                        <div class="calendar-day-header">J</div>
+                        <div class="calendar-day-header">V</div>
+                        <div class="calendar-day-header">S</div>
+                        
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day">1</div>
+                        
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day">27</div>
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day event-day">29</div>
+                        
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                        <div class="calendar-day empty">.</div>
+                    </div>
+                </div>
+                
+                <div class="countdown-container">
+                    <div class="countdown-title">Faltan</div>
+                    <div class="countdown-display" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">Días</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Horas</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Minutos</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Segundos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rsvp-title">Confirma tu asistencia</div>
+                <div class="rsvp-deadline" style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 24px; font-style: italic; letter-spacing: 0.5px;">antes del 27 de noviembre</div>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <a href="https://forms.gle/XgMUWjnioRsZ3eBa7" target="_blank" class="confirm-button">
+                <span class="button-text">Confirmar Asistencia</span>
+            </a>
+            <svg class="decorative-element" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="petalGradient" cx="40%" cy="40%">
+                        <stop offset="0%" style="stop-color:#E0F7FA;stop-opacity:1" />
+                        <stop offset="60%" style="stop-color:#80DEEA;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#4DD0E1;stop-opacity:1" />
+                    </radialGradient>
+                    <radialGradient id="centerGradient" cx="50%" cy="50%">
+                        <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                        <stop offset="40%" style="stop-color:#FFD700;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                    </radialGradient>
+                    <filter id="softGlow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <g transform="translate(60, 60)" filter="url(#softGlow)">
+                    <!-- Pétalos perfectamente simétricos -->
+                    <!-- Pétalo 1 (arriba) -->
+                    <ellipse cx="0" cy="-20" rx="10" ry="14" 
+                             fill="url(#petalGradient)" 
+                             stroke="#4DD0E1" 
+                             stroke-width="1"
+                             opacity="0.95">
+                        <animate attributeName="ry" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Pétalo 2 (arriba derecha) -->
+                    <ellipse cx="0" cy="-20" rx="10" ry="14" 
+                             fill="url(#petalGradient)" 
+                             stroke="#4DD0E1" 
+                             stroke-width="1"
+                             transform="rotate(72)"
+                             opacity="0.95">
+                        <animate attributeName="ry" values="14;15;14" dur="3.2s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Pétalo 3 (abajo derecha) -->
+                    <ellipse cx="0" cy="-20" rx="10" ry="14" 
+                             fill="url(#petalGradient)" 
+                             stroke="#4DD0E1" 
+                             stroke-width="1"
+                             transform="rotate(144)"
+                             opacity="0.95">
+                        <animate attributeName="ry" values="14;15;14" dur="3.4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Pétalo 4 (abajo izquierda) -->
+                    <ellipse cx="0" cy="-20" rx="10" ry="14" 
+                             fill="url(#petalGradient)" 
+                             stroke="#4DD0E1" 
+                             stroke-width="1"
+                             transform="rotate(216)"
+                             opacity="0.95">
+                        <animate attributeName="ry" values="14;15;14" dur="3.6s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Pétalo 5 (arriba izquierda) -->
+                    <ellipse cx="0" cy="-20" rx="10" ry="14" 
+                             fill="url(#petalGradient)" 
+                             stroke="#4DD0E1" 
+                             stroke-width="1"
+                             transform="rotate(288)"
+                             opacity="0.95">
+                        <animate attributeName="ry" values="14;15;14" dur="3.8s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Capa de pétalos interiores más pequeños -->
+                    <ellipse cx="0" cy="-12" rx="7" ry="10" 
+                             fill="#B2EBF2" 
+                             opacity="0.8"
+                             transform="rotate(36)"/>
+                    <ellipse cx="0" cy="-12" rx="7" ry="10" 
+                             fill="#B2EBF2" 
+                             opacity="0.8"
+                             transform="rotate(108)"/>
+                    <ellipse cx="0" cy="-12" rx="7" ry="10" 
+                             fill="#B2EBF2" 
+                             opacity="0.8"
+                             transform="rotate(180)"/>
+                    <ellipse cx="0" cy="-12" rx="7" ry="10" 
+                             fill="#B2EBF2" 
+                             opacity="0.8"
+                             transform="rotate(252)"/>
+                    <ellipse cx="0" cy="-12" rx="7" ry="10" 
+                             fill="#B2EBF2" 
+                             opacity="0.8"
+                             transform="rotate(324)"/>
+                    
+                    <!-- Centro de la flor -->
+                    <circle cx="0" cy="0" r="9" fill="url(#centerGradient)">
+                        <animate attributeName="r" values="9;10;9" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="0" cy="0" r="6" fill="#FFD700" opacity="0.8"/>
+                    <circle cx="0" cy="0" r="4" fill="#FFA500" opacity="0.6">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Detalles brillantes -->
+                    <circle cx="-2" cy="-2" r="1.8" fill="#FFFFFF" opacity="0.9">
+                        <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="2" cy="1" r="1.2" fill="#FFFFFF" opacity="0.8">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Pequeñas hojas decorativas -->
+                    <ellipse cx="-28" cy="5" rx="5" ry="9" 
+                             fill="#80DEEA" 
+                             opacity="0.7"
+                             transform="rotate(-25 -28 5)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            values="-25 -28 5;-20 -28 5;-25 -28 5"
+                            dur="3s"
+                            repeatCount="indefinite"/>
+                    </ellipse>
+                    <ellipse cx="28" cy="5" rx="5" ry="9" 
+                             fill="#80DEEA" 
+                             opacity="0.7"
+                             transform="rotate(25 28 5)">
+                        <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            values="25 28 5;20 28 5;25 28 5"
+                            dur="3s"
+                            repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Brillos flotantes alrededor -->
+                    <circle cx="-20" cy="-15" r="1.5" fill="#E0F7FA" opacity="0.6">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="cy" values="-15;-18;-15" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="20" cy="-15" r="1.5" fill="#E0F7FA" opacity="0.6">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2.3s" repeatCount="indefinite"/>
+                        <animate attributeName="cy" values="-15;-18;-15" dur="3.2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="-15" cy="20" r="1.2" fill="#80DEEA" opacity="0.7">
+                        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
+                        <animate attributeName="cy" values="20;17;20" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="15" cy="20" r="1.2" fill="#80DEEA" opacity="0.7">
+                        <animate attributeName="opacity" values="0.4;1;0.4" dur="2.7s" repeatCount="indefinite"/>
+                        <animate attributeName="cy" values="20;17;20" dur="3.7s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        const bubblesContainer = document.getElementById('bubblesContainer');
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 80 + 40;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDelay = Math.random() * 15 + 's';
+            bubble.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            bubblesContainer.appendChild(bubble);
+        }
+
+        const lightParticles = document.getElementById('lightParticles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'light-particle';
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            lightParticles.appendChild(particle);
+        }
+
+        const starsField = document.getElementById('starsField');
+        for (let i = 0; i < 70; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            if (Math.random() > 0.5) star.classList.add('twinkle');
+            const size = Math.random() * 3 + 1.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            starsField.appendChild(star);
+        }
+
+        // Hearts (corazones)
+        const heartsContainer = document.getElementById('heartsContainer');
+        for (let i = 0; i < 8; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 12 + 's';
+            heart.style.animationDuration = (Math.random() * 8 + 10) + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Flores flotantes
+        const flowersContainer = document.getElementById('flowersContainer');
+        const flowerColors = [
+            ['#FFB6C1', '#FFC0CB', '#FFD700'], // Rosa
+            ['#E6E6FA', '#DDA0DD', '#FFD700'], // Lavanda
+            ['#FFE4E1', '#FFB6C1', '#FFD700'], // Rosa claro
+            ['#87CEEB', '#B0E0E6', '#FFD700'], // Azul
+            ['#FFDAB9', '#FFB6C1', '#FFD700']  // Melocotón
+        ];
+
+        for (let i = 0; i < 12; i++) {
+            const flower = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            flower.classList.add('floating-flower');
+            flower.setAttribute('width', '40');
+            flower.setAttribute('height', '40');
+            flower.setAttribute('viewBox', '0 0 40 40');
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDelay = Math.random() * 15 + 's';
+            flower.style.animationDuration = (Math.random() * 8 + 12) + 's';
+            
+            const colors = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+            
+            flower.innerHTML = `
+                <g>
+                    <circle cx="20" cy="20" r="6" fill="${colors[0]}"/>
+                    <circle cx="14" cy="16" r="5" fill="${colors[1]}"/>
+                    <circle cx="16" cy="25" r="5" fill="${colors[1]}"/>
+                    <circle cx="25" cy="16" r="5" fill="${colors[1]}"/>
+                    <circle cx="24" cy="25" r="5" fill="${colors[1]}"/>
+                    <circle cx="20" cy="20" r="3" fill="${colors[2]}"/>
+                </g>
+            `;
+            
+            flowersContainer.appendChild(flower);
+        }
+
+        // Mariposas flotantes
+        const butterfliesContainer = document.getElementById('butterfliesContainer');
+        const butterflyColors = [
+            ['#FF69B4', '#FFB6C1'], // Rosa
+            ['#DDA0DD', '#E6E6FA'], // Púrpura
+            ['#87CEEB', '#B0E0E6'], // Azul
+            ['#FFD700', '#FFA500'], // Dorado
+            ['#FF6B9D', '#FFC0CB'],  // Rosa fuerte
+            ['#FF1493', '#FFB6D9'], // Rosa intenso
+            ['#BA55D3', '#E0B0FF'], // Orquídea
+            ['#4169E1', '#87CEFA'], // Azul real
+            ['#FF69B4', '#FFAFCC'], // Rosa pastel
+            ['#9370DB', '#D8BFD8']  // Morado medio
+        ];
+
+        for (let i = 0; i < 20; i++) {
+            const butterfly = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            butterfly.classList.add('butterfly');
+            butterfly.setAttribute('width', '50');
+            butterfly.setAttribute('height', '50');
+            butterfly.setAttribute('viewBox', '0 0 50 50');
+            butterfly.style.left = Math.random() * 100 + '%';
+            butterfly.style.animationDelay = Math.random() * 20 + 's';
+            butterfly.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            
+            const colors = butterflyColors[Math.floor(Math.random() * butterflyColors.length)];
+            
+            butterfly.innerHTML = `
+                <defs>
+                    <filter id="butterflyShadow${i}">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+                        <feOffset dx="0" dy="1" result="offsetblur"/>
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3"/>
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    <radialGradient id="wingGrad${i}a" cx="40%" cy="40%">
+                        <stop offset="0%" style="stop-color:white;stop-opacity:0.4" />
+                        <stop offset="100%" style="stop-color:${colors[0]};stop-opacity:1" />
+                    </radialGradient>
+                    <radialGradient id="wingGrad${i}b" cx="40%" cy="40%">
+                        <stop offset="0%" style="stop-color:white;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:${colors[1]};stop-opacity:1" />
+                    </radialGradient>
+                </defs>
+                <g filter="url(#butterflyShadow${i})">
+                    <!-- Ala izquierda superior -->
+                    <ellipse class="butterfly-wing" cx="15" cy="18" rx="12" ry="15" fill="url(#wingGrad${i}a)" transform-origin="15 18"/>
+                    <ellipse cx="15" cy="18" rx="8" ry="10" fill="${colors[1]}"/>
+                    <circle cx="12" cy="15" r="2.5" fill="white" opacity="0.7"/>
+                    <circle cx="18" cy="20" r="2" fill="white" opacity="0.7"/>
+                    <circle cx="14" cy="22" r="1.5" fill="${colors[0]}" opacity="0.8"/>
+                    
+                    <!-- Ala izquierda inferior -->
+                    <ellipse class="butterfly-wing" cx="18" cy="32" rx="10" ry="12" fill="url(#wingGrad${i}a)" transform-origin="18 32"/>
+                    <ellipse cx="18" cy="32" rx="6" ry="8" fill="${colors[1]}"/>
+                    <circle cx="16" cy="30" r="2" fill="white" opacity="0.7"/>
+                    <circle cx="20" cy="34" r="1.5" fill="${colors[0]}" opacity="0.8"/>
+                    
+                    <!-- Ala derecha superior -->
+                    <ellipse class="butterfly-wing" cx="35" cy="18" rx="12" ry="15" fill="url(#wingGrad${i}a)" transform-origin="35 18"/>
+                    <ellipse cx="35" cy="18" rx="8" ry="10" fill="${colors[1]}"/>
+                    <circle cx="38" cy="15" r="2.5" fill="white" opacity="0.7"/>
+                    <circle cx="32" cy="20" r="2" fill="white" opacity="0.7"/>
+                    <circle cx="36" cy="22" r="1.5" fill="${colors[0]}" opacity="0.8"/>
+                    
+                    <!-- Ala derecha inferior -->
+                    <ellipse class="butterfly-wing" cx="32" cy="32" rx="10" ry="12" fill="url(#wingGrad${i}a)" transform-origin="32 32"/>
+                    <ellipse cx="32" cy="32" rx="6" ry="8" fill="${colors[1]}"/>
+                    <circle cx="34" cy="30" r="2" fill="white" opacity="0.7"/>
+                    <circle cx="30" cy="34" r="1.5" fill="${colors[0]}" opacity="0.8"/>
+                    
+                    <!-- Cuerpo con segmentos -->
+                    <ellipse cx="25" cy="25" rx="2.5" ry="10" fill="#2E4053"/>
+                    <ellipse cx="25" cy="21" r="1.5" fill="#34495E"/>
+                    <ellipse cx="25" cy="24" r="1.3" fill="#34495E"/>
+                    <ellipse cx="25" cy="27" r="1.3" fill="#34495E"/>
+                    <circle cx="25" cy="19" r="2.2" fill="#2E4053"/>
+                    
+                    <!-- Antenas más detalladas -->
+                    <path d="M 25 19 Q 23 15 22 13" stroke="#2E4053" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M 25 19 Q 27 15 28 13" stroke="#2E4053" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <circle cx="22" cy="13" r="1.3" fill="#2E4053"/>
+                    <circle cx="28" cy="13" r="1.3" fill="#2E4053"/>
+                    
+                    <!-- Detalles en el borde de las alas -->
+                    <path d="M 8 18 Q 10 15 12 14" stroke="${colors[0]}" stroke-width="0.8" fill="none" opacity="0.6"/>
+                    <path d="M 42 18 Q 40 15 38 14" stroke="${colors[0]}" stroke-width="0.8" fill="none" opacity="0.6"/>
+                </g>
+            `;
+            
+            butterfliesContainer.appendChild(butterfly);
+        }
+
+        // Cuenta regresiva
+        const eventDate = new Date('November 29, 2025 17:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
